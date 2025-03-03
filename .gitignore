@@ -169,3 +169,24 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+# Ignore node_modules directory if you are using npm
+node_modules/
+
+# Ignore build directories for frontend
+/dist/
+/build/
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+
+# Ignore configuration files with personal data
+config.json
+
+# Ignore cache files
+/cache/
+
+# Ignore frontend build artifacts
+/public/*
+!public/index.html
+!public/favicon.ico
