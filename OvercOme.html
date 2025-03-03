@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Целеполагание</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        input, select {
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            max-width: 400px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .progress-bar {
+            width: 80%;
+            max-width: 400px;
+            height: 20px;
+            background-color: #e0e0e0;
+            margin: 20px auto;
+            position: relative;
+        }
+        .progress-fill {
+            height: 100%;
+            background-color: #28a745;
+            width: 0%; /* Начальное значение прогресса */
+        }
+    </style>
+</head>
+<body>
+    <h1>Поставьте свою цель</h1>
+
+    <!-- Форма для ввода данных -->
+    <div class="form-group">
+        <input type="text" id="goalInput" placeholder="Введите вашу цель">
+    </div>
+    <div class="form-group">
+        <input type="date" id="endDate">
+    </div>
+    <div class="form-group">
+        <select id="prioritySelect">
+            <option value="low">Низкий приоритет</option>
+            <option value="medium">Средний приоритет</option>
+            <option value="high">Высокий приоритет</option>
+        </select>
+    </div>
+    <button id="saveGoal">Сохранить цель</button>
+
+    <!-- Визуализация прогресса -->
+    <h2>Прогресс</h2>
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <p id="progressText">0%</p>
+
+    <script>
+        // Пример обработки сохранения цели
+        document.getElementById('saveGoal').addEventListener('click', () => {
+            const goal = document.getElementById('goalInput').value;
+            const endDate = document.getElementById('endDate').value;
+            const priority = document.getElementById('prioritySelect').value;
+
+            if (!goal || !endDate) {
+                alert("Пожалуйста, заполните все поля.");
+                return;
+            }
+
+            alert(`Цель сохранена: ${goal}\nДата завершения: ${endDate}\nПриоритет: ${priority}`);
+        });
+
+        // Пример обновления прогресса
+        let progress = 0; // Текущий прогресс (в процентах)
+        setInterval(() => {
+            if (progress < 100) {
+                progress += 10; // Увеличиваем прогресс на 10% каждую секунду
+                document.getElementById('progressFill').style.width = `${progress}%`;
+                document.getElementById('progressText').innerText = `${progress}%`;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
